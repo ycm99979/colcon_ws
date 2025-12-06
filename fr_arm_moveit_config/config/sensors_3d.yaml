@@ -1,0 +1,29 @@
+# Octomap configuration for MoveIt2 with RealSense D455 Depth Image
+# 
+# 이 파일은 MoveIt2의 3D 인식 파이프라인을 설정합니다.
+# DepthImageOctomapUpdater를 사용하여 깊이 이미지 기반으로 Octomap을 생성합니다.
+# PointCloud 방식보다 더 효율적이고 빠릅니다.
+#
+# 참고: MoveItConfigsBuilder 호환성을 위해 sensors는 빈 배열로 설정합니다.
+#       실제 센서 설정은 런치파일에서 move_group 파라미터로 전달됩니다.
+
+# Octomap parameters
+octomap_frame: world
+octomap_resolution: 0.025
+max_range: 2.5
+
+# Sensor configuration (MoveItConfigsBuilder 호환)
+sensors: []
+
+# DepthImageOctomapUpdater 설정 참고 (런치파일에서 사용):
+# sensor_plugin: occupancy_map_monitor/DepthImageOctomapUpdater
+# image_topic: /camera/aligned_depth_to_color/image_raw
+# queue_size: 5
+# near_clipping_plane_distance: 0.3
+# far_clipping_plane_distance: 2.5
+# shadow_threshold: 0.2
+# padding_scale: 2.0
+# padding_offset: 0.03
+# max_update_rate: 25.0
+# skip_vertical_pixels: 2
+# skip_horizontal_pixels: 2

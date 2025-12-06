@@ -1,0 +1,8 @@
+# Default initial positions for pinky's ros2_control fake system
+
+initial_positions:
+  actuator2_to_actuator1: 0
+  actuator3_to_upperarm_link: 0
+  actuator4_to_forearm_link: 0
+  gripper_left_joint: 0
+  upperarm_link_to_actuator2: 0

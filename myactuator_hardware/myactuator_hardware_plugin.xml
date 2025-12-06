@@ -1,0 +1,11 @@
+<library path="myactuator_hardware">
+  <class name="myactuator_hardware/MultiMotorHardwareInterface"
+         type="myactuator_hardware::MultiMotorHardwareInterface"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Multi-motor hardware interface for MyActuator RMD series.
+      Supports multiple motors on a single CAN bus with position, velocity, and effort control.
+      Designed for use with MoveIt2 and JointTrajectoryController.
+    </description>
+  </class>
+</library>

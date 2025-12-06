@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="fr_arm_ros2_control" params="name initial_positions_file">
+        <xacro:property name="initial_positions" value="${load_yaml(initial_positions_file)['initial_positions']}"/>
+
+        <ros2_control name="${name}" type="system">
+            <hardware>
+                <!-- By default, set up controllers for simulation. This won't work on real hardware -->
+                <plugin>mock_components/GenericSystem</plugin>
+            </hardware>
+            <joint name="actuator2_to_actuator1">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <command_interface name="effort"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['actuator2_to_actuator1']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+                <state_interface name="effort"/>
+            </joint>
+            <joint name="upperarm_link_to_actuator2">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <command_interface name="effort"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['upperarm_link_to_actuator2']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+                <state_interface name="effort"/>
+            </joint>
+            <joint name="actuator3_to_upperarm_link">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <command_interface name="effort"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['actuator3_to_upperarm_link']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+                <state_interface name="effort"/>
+            </joint>
+            <joint name="actuator4_to_forearm_link">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <command_interface name="effort"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['actuator4_to_forearm_link']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+                <state_interface name="effort"/>
+            </joint>
+            <joint name="gripper_left_joint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <command_interface name="effort"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['gripper_left_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+                <state_interface name="effort"/>
+            </joint>
+
+        </ros2_control>
+    </xacro:macro>
+</robot>

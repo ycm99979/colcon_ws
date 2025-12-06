@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- URDF for real hardware with MyActuator RMD motors -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="fr_arm">
+    <!-- Import fr_arm urdf file -->
+    <xacro:include filename="$(find fr_arm_description)/urdf/robot_core.xacro" />
+
+    <!-- Import fr_arm ros2_control description for real hardware -->
+    <xacro:include filename="$(find fr_arm_moveit_config)/config/fr_arm.ros2_control.hardware.xacro" />
+
+    <!-- ros2_control instance with real hardware -->
+    <xacro:arg name="can_interface" default="can0"/>
+    <xacro:fr_arm_ros2_control
+        name="fr_arm_hardware"
+        initial_positions_file="$(find fr_arm_moveit_config)/config/initial_positions.yaml"
+        can_interface="$(arg can_interface)"/>
+</robot>
